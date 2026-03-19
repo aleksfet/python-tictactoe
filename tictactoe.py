@@ -60,13 +60,15 @@ while running:
 
             #Vertical
             if len(set(map[i])) == 1 and set(map[i]) != {0}:
-                text_surface = my_font.render('player '+str(map[i][0])+' wins', False, (0, 0, 255))
+                winner = "X" if map[i][0] == 1 else "O"
+                text_surface = my_font.render('Player '+winner+' wins', False, (0, 0, 255))
                 screen.blit(text_surface, (267,745))
                 finished= True
                 someonewon = True
             #Horizontal
             if map[0][i] == map[1][i] and map[0][i] == map[2][i] and map[0][i] != 0:
-                text_surface = my_font.render('player '+str(map[0][i])+' wins', False, (0, 0, 255))   
+                winner = "X" if map[0][i] == 1 else "O"
+                text_surface = my_font.render('Player '+winner+' wins', False, (0, 0, 255))   
                 screen.blit(text_surface, (267,745))     
                 finished= True
                 someonewon = True
@@ -76,12 +78,14 @@ while running:
         diagonals.append([map[0][2],map[1][1],map[2][0]])
         #print(diagonals)
         if len(set(diagonals[0])) == 1 and diagonals[0][0] != 0:
-            text_surface = my_font.render('player '+str(diagonals[0][0])+' wins', False, (0, 0, 255))   
+            winner = "X" if diagonals[0][0] == 1 else "O"
+            text_surface = my_font.render('Player '+winner+' wins', False, (0, 0, 255))   
             screen.blit(text_surface, (267,745))  
             finished= True
             someonewon = True
         if len(set(diagonals[1])) == 1 and diagonals[1][0] != 0:
-            text_surface = my_font.render('player '+str(diagonals[1][0])+' wins', False, (0, 0, 255))   
+            winner = "X" if diagonals[1][0] == 1 else "O"
+            text_surface = my_font.render('Player '+winner+' wins', False, (0, 0, 255))   
             screen.blit(text_surface, (267,745))  
             finished= True
             someonewon = True
@@ -107,4 +111,9 @@ while running:
                         [0,0,0],
                         [0,0,0]
                     ]
+                    turn = 2
+                    filled = 0
+                    finished = False
+                    someonewon = False
+                    screen.fill(background_colour)
 
